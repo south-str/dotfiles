@@ -20,6 +20,12 @@ set autoindent
 set backspace=indent,eol,start
 "画面の端で折り返さない
 set nowrap
+"html閉じタグ補完
+augroup XML_Complete
+  autocmd!
+  autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
+augroup END
 
 "--look&feel--
 "入力中のコマンド(yyなど)を表示する
@@ -35,7 +41,7 @@ set cursorcolumn
 set list
 "不可視文字の表示記号を指定する
 set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮
-"検索語を強調表示(<C-L>で強調解除)
+"検索語を強調表示(<C-l>で強調解除)
 set hlsearch
 "ルーラー表示
 set ruler
@@ -66,51 +72,12 @@ set expandtab
 "--Mapping--
 "Yの動作をDやCと同じにする
 map Y y$
-"<C-L>で検索語の強調表示を解除する
+"<C-l>で検索語の強調表示を解除する
 nnoremap <C-L> :nohl<CR><C-L>
 
 "--Encoding options--
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
-endif
-if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    if has('mac')
-      let &fileencodings = s:enc_jis .','. s:enc_euc
-      let &fileencodings = &fileencodings .','. s:fileencodings_default
-    else
-      let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-      let &fileencodings = &fileencodings .','. s:fileencodings_default
-    endif
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
-    endif
-  endif
-  unlet s:enc_euc
-  unlet s:enc_jis
-endif
+set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8
+set fileformats=unix,dos,mac
 
 "特殊文字があってもカーソル位置がずれないようにする
 set ambiwidth=double
