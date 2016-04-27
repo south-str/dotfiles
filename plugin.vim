@@ -90,7 +90,9 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 "--solarized option--
-let g:solarized_termcolors=256
+let g:solarized_bold=0
+let g:solarized_underline=0
+let g:solarized_italic=0
 syntax enable
 set background=dark
 "set background=light
