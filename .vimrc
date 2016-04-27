@@ -7,7 +7,7 @@ set autoread
 "クリップボードを使用する
 set clipboard+=unnamed
 "ファイル名と内容によってファイルタイプを判別し、ファイルタイププラグインを有効にする
-filetype indent plugin on
+"filetype indent plugin on
 "バッファを保存しなくても他のバッファを表示できるようにする
 set hidden
 "コマンドライン補完を便利に
@@ -76,7 +76,7 @@ map Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 
 "--Encoding options--
-set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8
+set fileencodings=utf-8,cp932,iso-2022-jp,euc-jp
 set fileformats=unix,dos,mac
 
 "特殊文字があってもカーソル位置がずれないようにする
