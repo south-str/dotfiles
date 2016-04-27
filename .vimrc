@@ -30,8 +30,8 @@ augroup END
 "--look&feel--
 "入力中のコマンド(yyなど)を表示する
 set showcmd
-"シンタックスハイライトを有効にする
-syntax on
+"シンタックスハイライトを有効にする(plugin.vimで有効にしている)
+"syntax on
 "行を強調表示
 set cursorline
 "highlight CursorLine term=reverse cterm=reverse
