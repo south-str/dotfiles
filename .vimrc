@@ -57,6 +57,7 @@ set number
 set laststatus=2
 "ステータスラインのフォーマット
 set statusline=%F%m%r%h%w\ 
+set statusline+=[ENCODE=%{&fileencoding}]\ 
 set statusline+=[FORMAT=%{&ff}]\ 
 set statusline+=[TYPE=%Y]%=
 "set statusline+=[ASCII=\%03.3b]\ 
@@ -76,8 +77,8 @@ map Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 
 "--Encoding options--
-set fileencodings=utf-8,cp932,iso-2022-jp,euc-jp
-set fileformats=unix,dos,mac
+set fileencodings=utf-8,cp932,iso-2022-jp,sjis,euc-jp
+set fileformats=unix,mac,dos
 
 "特殊文字があってもカーソル位置がずれないようにする
 set ambiwidth=double
