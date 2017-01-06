@@ -1,13 +1,17 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.cache/dein'))
 
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/unite.vim')
+"call dein#add('pangloss/vim-javascript')
+call dein#add('othree/javascript-libraries-syntax.vim')
+call dein#add('othree/yajs.vim')
+call dein#add('vim-scripts/SyntaxComplete')
 call dein#add('altercation/vim-colors-solarized')
 
 call dein#end()
@@ -87,7 +91,16 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+"--javascript-libraries-syntax option--
+let g:used_javascript_libs = 'underscore,react,flux,jasmine'
 
+"-- SyntaxComplete option--
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+        \if &omnifunc == "" |
+        \setlocal omnifunc=syntaxcomplete#Complete |
+        \endif
+endif
 
 "--solarized option--
 let g:solarized_bold=0
