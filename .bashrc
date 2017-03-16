@@ -2,6 +2,12 @@
 export PATH=/usr/local/bin:usr/bin
 #export PATH=$HOME/.nodebrew/current/bin:$PATH
 #-------------------------------------------------------------------------------
+# rbenv用の設定
+#export RBENV_ROOT=/usr/local/var/rbenv
+#[[ -d ~/.rbenv ]] && \
+#  export PATH=$HOME/.rbenv/bin:$PATH && \
+#  eval "$(rbenv init -)"
+#-------------------------------------------------------------------------------
 # Macのmanはカラー化できないようだ。残念。
 export MANPAGER='less -iMRs'
 #-------------------------------------------------------------------------------
