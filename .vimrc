@@ -27,7 +27,7 @@ augroup XML_Complete
   autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-"--look&feel--
+"--look and feel--
 "入力中のコマンド(yyなど)を表示する
 set showcmd
 "シンタックスハイライトを有効にする(plugin.vimで有効にしている)
@@ -51,6 +51,11 @@ set visualbell
 set cmdheight=2
 "行番号を表示する
 set number
+"vimdiffの色を設定する
+highlight DiffAdd cterm=reverse
+highlight DiffDelete cterm=reverse
+highlight DiffChange cterm=reverse
+highlight DiffText cterm=reverse
 
 "--statusline--
 "ステータスラインを常に表示
@@ -66,22 +71,34 @@ set statusline+=[ROW=%04l,COL=%04c][%p%%]\
 set statusline+=[LEN=%L]
 
 "--indentation options--
+"ファイル中の<Tab>文字を、画面上の見た目で何文字文に展開するかを指定する
+set tabstop=2
+"vimが挿入するインデント(cindent)やシフトオペレータ(<<,>>)で挿入/削除されるインデントの幅を画面上の見た目で何文字文であるかを指定する
 set shiftwidth=2
+"キーボードで<Tab>キーを押した時に挿入される空白の量
 set softtabstop=2
+"タブをスペースに置き換える
 set expandtab
 
-"--Mapping--
+"--key mapping--
 "Yの動作をDやCと同じにする
 map Y y$
 "<C-l>で検索語の強調表示を解除する
 nnoremap <C-L> :nohl<CR><C-L>
 
-"--Encoding options--
+"--encoding options--
 set fileencodings=utf-8,cp932,iso-2022-jp,sjis,euc-jp
 set fileformats=unix,mac,dos
 
+"--other options--
 "特殊文字があってもカーソル位置がずれないようにする
 set ambiwidth=double
 
-"--Plugin--
+"--window options--
+"ウィンドウの水平分割時に新しいウィンドウを下に開く
+set splitbelow
+"ウィンドウの垂直分割時に新しいウィンドウを右に開く
+set splitright
+
+"--plugin--
 source ~/plugin.vim
