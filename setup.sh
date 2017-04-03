@@ -1,4 +1,14 @@
 #!/bin/sh
+###
+# @(#) setup.sh ver 0.0.x 04.13.2017
+#
+# Usage:
+#  no parameters
+#
+# Description:
+#  This script setup my local development environment.
+###
+
 # セットアップ用環境変数の設定
 CURRENT_DIRECTORY=$(pwd)
 
