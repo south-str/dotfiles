@@ -16,6 +16,7 @@ export LESS_TERMCAP_mb=$'\E[05;31m'      # Begins blinking.
 export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
 export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
 export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
+
 #-------------------------------------------------------------------------------
 # lsのエイリアスを設定し、色分けされるようにする
 # [ ]はtest関数の省略表記。
@@ -41,6 +42,10 @@ fi
 #alias ls='gls --color=auto'
 #alias gls='gls --color=auto'
 #eval $(gdircolors ~/Product/dircolors-solarized/dircolors.ansi-universal)
+
+#-------------------------------------------------------------------------------
+# grepの色付け
+alias grep='grep --color=auto'
 
 #-------------------------------------------------------------------------------
 # promptの表示を変更する
