@@ -101,4 +101,4 @@ set splitbelow
 set splitright
 
 "--plugin--
-source ~/plugin.vim
+source ~/.vim/plugin.vim
