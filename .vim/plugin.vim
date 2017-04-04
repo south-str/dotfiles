@@ -13,6 +13,7 @@ call dein#add('othree/javascript-libraries-syntax.vim')
 call dein#add('othree/yajs.vim')
 call dein#add('vim-scripts/SyntaxComplete')
 call dein#add('altercation/vim-colors-solarized')
+call dein#add('vim-jp/vimdoc-ja')
 
 call dein#end()
 
