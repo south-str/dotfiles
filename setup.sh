@@ -30,3 +30,9 @@ if [ -d ~/.vim ] ; then
 else
   echo "~/.vim directory is not exists"
 fi
+
+echo "download dein"
+cd ~/.vim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.vim
+echo "open vim and execute [:call dein#install()]"
