@@ -104,14 +104,16 @@ if has("autocmd") && exists("+omnifunc")
 endif
 
 "--solarized option--
-let g:solarized_bold=0
-let g:solarized_underline=0
-let g:solarized_italic=0
+"有効にできるかも？ 試験運用中
+"let g:solarized_bold=0
+"let g:solarized_underline=0
+"let g:solarized_italic=0
 syntax enable
 set background=dark
 "set background=light
 colorscheme solarized
 call togglebg#map("<F5>")
+"見やすいVimDiffを試行錯誤中
 "change diff colors
 ":h cterm-colors
 "NR-16   NR-8    COLOR NAME ~
@@ -140,7 +142,7 @@ call togglebg#map("<F5>")
 "italic
 "standout
 "NONE      no attributes used (used to reset it)
-highlight DiffAdd cterm=reverse
-highlight DiffDelete cterm=reverse
-highlight DiffChange cterm=reverse
-highlight DiffText cterm=reverse
+"highlight DiffAdd cterm=reverse
+"highlight DiffDelete cterm=reverse
+"highlight DiffChange cterm=reverse
+"highlight DiffText cterm=reverse
