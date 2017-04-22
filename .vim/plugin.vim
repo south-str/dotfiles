@@ -6,6 +6,7 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.cache/dein'))
 
 call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/unite.vim')
 "call dein#add('pangloss/vim-javascript')
@@ -14,6 +15,10 @@ call dein#add('othree/yajs.vim')
 call dein#add('vim-scripts/SyntaxComplete')
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('vim-jp/vimdoc-ja')
+call dein#add('thinca/vim-quickrun')
+" GaucheのREPLをVimから使うためのplugin
+call dein#add('aharisu/vim_goshrepl')
+call dein#add('aharisu/vim-gdev')
 
 call dein#end()
 
@@ -146,3 +151,20 @@ call togglebg#map("<F5>")
 "highlight DiffDelete cterm=reverse
 "highlight DiffChange cterm=reverse
 "highlight DiffText cterm=reverse
+
+"--quickrun option--
+"全てのtypeで出力バッファのウィンドウを最下部に表示し、出力がない場合は出力バッファを閉じる。
+"vimprocを使い非同期実行を行う。
+let g:quickrun_config = {
+      \"_" : {
+      \"outputter/buffer/split" : ":botright 8sp",
+      \"outputter/buffer/close_on_empty" : 1,
+      \"runner" : "vimproc",
+      \"runner/vimproc/updatetime" : 60
+      \},
+      \}
+"<C-c>で実行を強制終了させる
+"quickrun.vimを実行していない場合には<C-c>を呼び出す
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+"実行が成功すればバッファへ、失敗すればquickfixへ出力するコマンドのサンプル
+":QuickRun -outputter error -outputter/error/success buffer -outputter/error quickfix
