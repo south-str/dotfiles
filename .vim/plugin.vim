@@ -17,8 +17,11 @@ call dein#add('altercation/vim-colors-solarized')
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('thinca/vim-quickrun')
 " GaucheのREPLをVimから使うためのplugin
-call dein#add('aharisu/vim_goshrepl')
-call dein#add('aharisu/vim-gdev')
+" slimvと競合しそうなので一旦封印
+"call dein#add('aharisu/vim_goshrepl')
+"call dein#add('aharisu/vim-gdev')
+" VimからLispのREPLを使うためのplugin
+call dein#add('kovisoft/slimv')
 
 call dein#end()
 
@@ -168,3 +171,7 @@ let g:quickrun_config = {
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 "実行が成功すればバッファへ、失敗すればquickfixへ出力するコマンドのサンプル
 ":QuickRun -outputter error -outputter/error/success buffer -outputter/error quickfix
+
+"--slimv option--
+"SWANKサーバを起動するためのコマンド
+let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ccl64 --load ~/.cache/dein/repos/github.com/kovisoft/slimv/slime/start-swank.lisp\""'
