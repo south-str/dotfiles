@@ -37,13 +37,6 @@ fi
 #export LSCOLORS=exfxcxdxbxegedabagacad
 
 #-------------------------------------------------------------------------------
-# glsをlsのエイリアスにし、色分けするようにする
-# MacではHomebrewか何かでcoreutilsをインストールしないとglsは存在しない。
-#alias ls='gls --color=auto'
-#alias gls='gls --color=auto'
-#eval $(gdircolors ~/Product/dircolors-solarized/dircolors.ansi-universal)
-
-#-------------------------------------------------------------------------------
 # grepの色付け
 alias grep='grep --color=auto'
 
@@ -61,4 +54,14 @@ fi
 ## promptの表示を変更する
 ## ANSIカラーシーケンスは"\e[text;fore;backm"で開始され、元に戻す場合は"\e[0m"で閉じる。
 export PS1="\h@\u:\[\e[0;34m\]\w\[\e[m\]\n\t\[\e[0;32m\]\$(parse_git_branch)\[\e[m\]\[\e[4;32m\]${ssh}\[\e[m\] $ "
+#-------------------------------------------------------------------------------
+# XLD.appのCLI設定。XLDについてくるシェルを参考にaliasを設定する。
+# これをしておけばインストールするたびにコピーしてというのを防げる。
+XLD_APP="/Applications/XLD.app"
+
+if [ ! -d "${XLD_APP}" ] ; then
+	echo "XLD.app not found"
+	exit;
+fi
+alias xld="${XLD_APP}/Contents/MacOS/XLD --cmdline $@"
 #-------------------------------------------------------------------------------
