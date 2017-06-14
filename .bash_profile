@@ -25,7 +25,6 @@ export PATH="$HOME/.nodebrew/current/bin:$PATH"
 # Node.jsをインストールする前は無効化しておく
 # Homebrew経由でnodebrewをインストールしている場合は、~/.nodebrew/srcが存在していないと
 # nodeのインストールでエラーが発生する。
-export NODEBREW_ROOT=/usr/local/var/nodebrew
 # /usr/local/etc/bash_completion.dにbash補間がインストールされている
 #-------------------------------------------------------------------------------
 # ターミナル(bash)起動時に.bashrcを読み込む
