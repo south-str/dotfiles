@@ -50,6 +50,7 @@ alias grep='grep --color=auto'
 #-------------------------------------------------------------------------------
 # promptの表示を変更する
 ## gitのブランチを表示する
+## TODO:git-promptを使うように改めたい
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
