@@ -44,6 +44,12 @@ fi
 #eval $(gdircolors ~/Product/dircolors-solarized/dircolors.ansi-universal)
 
 #-------------------------------------------------------------------------------
+# gitの補完を有効にする
+if [ -e /usr/local/Cellar/git/2.13.2/etc/bash_completion.d/git-completion.bash ]; then
+  source /usr/local/Cellar/git/2.13.2/etc/bash_completion.d/git-completion.bash
+fi
+
+#-------------------------------------------------------------------------------
 # grepの色付け
 alias grep='grep --color=auto'
 
