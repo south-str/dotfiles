@@ -174,4 +174,5 @@ nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() 
 
 "--slimv option--
 "SWANKサーバを起動するためのコマンド
-let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ccl64 --load ~/.cache/dein/repos/github.com/kovisoft/slimv/slime/start-swank.lisp\""'
+"let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ccl64 --load ~/.cache/dein/repos/github.com/kovisoft/slimv/slime/start-swank.lisp\""'
+let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ros -s swank -e \\\"(swank:create-server :port 4005 :dont-close t)\\\" wait\""'

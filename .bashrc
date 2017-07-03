@@ -37,16 +37,10 @@ fi
 #export LSCOLORS=exfxcxdxbxegedabagacad
 
 #-------------------------------------------------------------------------------
-# glsをlsのエイリアスにし、色分けするようにする
-# MacではHomebrewか何かでcoreutilsをインストールしないとglsは存在しない。
-#alias ls='gls --color=auto'
-#alias gls='gls --color=auto'
-#eval $(gdircolors ~/Product/dircolors-solarized/dircolors.ansi-universal)
-
-#-------------------------------------------------------------------------------
 # gitの補完を有効にする
-if [ -e /usr/local/Cellar/git/2.13.2/etc/bash_completion.d/git-completion.bash ]; then
-  source /usr/local/Cellar/git/2.13.2/etc/bash_completion.d/git-completion.bash
+gitCompletion=/usr/local/etc/bash_completion.d/git-completion.bash
+if [ -e ${gitCompletion} ]; then
+  source ${gitCompletion}
 fi
 
 #-------------------------------------------------------------------------------
@@ -61,10 +55,20 @@ function parse_git_branch {
 }
 
 ## SSHセッション用プロンプト
-if [ -n "$SSH_CLIENT" ] ; then ssh="[ssh-session]"
+if [ -n "${SSH_CLIENT}" ] ; then ssh="[ssh-session]"
 fi
 
 ## promptの表示を変更する
 ## ANSIカラーシーケンスは"\e[text;fore;backm"で開始され、元に戻す場合は"\e[0m"で閉じる。
 export PS1="\h@\u:\[\e[0;34m\]\w\[\e[m\]\n\t\[\e[0;32m\]\$(parse_git_branch)\[\e[m\]\[\e[4;32m\]${ssh}\[\e[m\] $ "
+#-------------------------------------------------------------------------------
+# XLD.appのCLI設定。XLDについてくるシェルを参考にaliasを設定する。
+# これをしておけばインストールするたびにコピーしてというのを防げる。
+#XLD_APP="/Applications/XLD.app"
+
+#if [ ! -d "${XLD_APP}" ] ; then
+  #echo "XLD.app not found"
+  #alias xld="${XLD_APP}/Contents/MacOS/XLD --cmdline $@"
+  #exit;
+#fi
 #-------------------------------------------------------------------------------
