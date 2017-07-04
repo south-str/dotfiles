@@ -38,6 +38,7 @@ fi
 
 #-------------------------------------------------------------------------------
 # gitの補完を有効にする
+## git-completion.bashはgitをHomebrewでインストールした際のパス(恐らく)
 gitCompletion=/usr/local/etc/bash_completion.d/git-completion.bash
 if [ -e ${gitCompletion} ]; then
   source ${gitCompletion}
@@ -50,10 +51,15 @@ alias grep='grep --color=auto'
 #-------------------------------------------------------------------------------
 # promptの表示を変更する
 ## gitのブランチを表示する
-## TODO:git-promptを使うように改めたい
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
+gitPrompt=/usr/local/etc/bash_completion.d/git-prompt.sh
+if [ -e ${gitPrompt} ]; then
+  source ${gitPrompt}
+fi
+## 環境変数で__git_ps1のオプションを指定する。詳細はソースコードを参照
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWSTASHSTATE=1
 
 ## SSHセッション用プロンプト
 if [ -n "${SSH_CLIENT}" ] ; then ssh="[ssh-session]"
@@ -61,7 +67,7 @@ fi
 
 ## promptの表示を変更する
 ## ANSIカラーシーケンスは"\e[text;fore;backm"で開始され、元に戻す場合は"\e[0m"で閉じる。
-export PS1="\h@\u:\[\e[0;34m\]\w\[\e[m\]\n\t\[\e[0;32m\]\$(parse_git_branch)\[\e[m\]\[\e[4;32m\]${ssh}\[\e[m\] $ "
+export PS1="\h@\u:\[\e[0;34m\]\w\[\e[m\]\n\t\[\e[0;32m\]\$(__git_ps1)\[\e[m\]\[\e[4;32m\]${ssh}\[\e[m\] $ "
 #-------------------------------------------------------------------------------
 # XLD.appのCLI設定。XLDについてくるシェルを参考にaliasを設定する。
 # これをしておけばインストールするたびにコピーしてというのを防げる。
