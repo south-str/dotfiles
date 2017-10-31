@@ -37,11 +37,23 @@ fi
 #export LSCOLORS=exfxcxdxbxegedabagacad
 
 #-------------------------------------------------------------------------------
-# gitの補完を有効にする
+# 補完を有効にする
 ## git-completion.bashはgitをHomebrewでインストールした際のパス(恐らく)
 gitCompletion=/usr/local/etc/bash_completion.d/git-completion.bash
 if [ -e ${gitCompletion} ]; then
   source ${gitCompletion}
+fi
+
+## homebrewの補完
+brewCompletion=/usr/local/etc/bash_completion.d/brew
+if [ -e ${brewCompletion} ]; then
+  source ${brewCompletion}
+fi
+
+## dockerの補完
+dockerCompletion=/usr/local/etc/bash_completion.d/docker
+if [ -e ${dockerCompletion} ]; then
+  source ${dockerCompletion}
 fi
 
 #-------------------------------------------------------------------------------

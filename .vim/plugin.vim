@@ -22,6 +22,8 @@ call dein#add('thinca/vim-quickrun')
 "call dein#add('aharisu/vim-gdev')
 " VimからLispのREPLを使うためのplugin
 call dein#add('kovisoft/slimv')
+" Goを使いやすいようにするplugin
+call dein#add('fatih/vim-go')
 
 call dein#end()
 
@@ -176,3 +178,7 @@ nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() 
 "SWANKサーバを起動するためのコマンド
 "let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ccl64 --load ~/.cache/dein/repos/github.com/kovisoft/slimv/slime/start-swank.lisp\""'
 let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ros -s swank -e \\\"(swank:create-server :port 4005 :dont-close t)\\\" wait\""'
+
+"--vim-go option--
+"GoInstallBinariesのインストール先を変更する
+"let g:go_bin_path = '/Users/supnakamurayoshihisa/.goenv/shims/go'
