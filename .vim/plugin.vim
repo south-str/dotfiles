@@ -1,7 +1,7 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.cache/dein'))
 
@@ -10,8 +10,9 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/unite.vim')
 "call dein#add('pangloss/vim-javascript')
-call dein#add('othree/javascript-libraries-syntax.vim')
+call dein#add('mxw/vim-jsx')
 call dein#add('othree/yajs.vim')
+call dein#add('othree/javascript-libraries-syntax.vim')
 call dein#add('vim-scripts/SyntaxComplete')
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('vim-jp/vimdoc-ja')
@@ -179,6 +180,3 @@ nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() 
 "let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ccl64 --load ~/.cache/dein/repos/github.com/kovisoft/slimv/slime/start-swank.lisp\""'
 let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ros -s swank -e \\\"(swank:create-server :port 4005 :dont-close t)\\\" wait\""'
 
-"--vim-go option--
-"GoInstallBinariesのインストール先を変更する
-"let g:go_bin_path = '/Users/supnakamurayoshihisa/.goenv/shims/go'
