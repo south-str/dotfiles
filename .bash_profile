@@ -28,7 +28,10 @@ export PATH="$HOME/.nodebrew/current/bin:$PATH"
 # /usr/local/etc/bash_completion.dにbash補間がインストールされている
 #-------------------------------------------------------------------------------
 # goenv用の設定
-eval "$(goenv init -)"
+GOENV_PATH=/usr/local/bin/goenv
+if [ -f $GOENV_PATH ] ; then
+  eval "$(goenv init -)"
+fi
 #-------------------------------------------------------------------------------
 # go用の環境変数設定
 export GOPATH="$HOME/.go"
