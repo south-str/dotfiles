@@ -1,7 +1,7 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.cache/dein'))
 
