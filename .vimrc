@@ -56,6 +56,10 @@ highlight DiffAdd cterm=reverse
 highlight DiffDelete cterm=reverse
 highlight DiffChange cterm=reverse
 highlight DiffText cterm=reverse
+"インデントによる自動折りたたみを生成する
+set foldmethod=indent
+"折り畳み表示カラム列数
+set foldcolumn=4
 
 "--statusline--
 "ステータスラインを常に表示
@@ -71,7 +75,7 @@ set statusline+=[ROW=%04l,COL=%04c][%p%%]\
 set statusline+=[LEN=%L]
 
 "--indentation options--
-"ファイル中の<Tab>文字を、画面上の見た目で何文字文に展開するかを指定する
+"ファイル中の<Tab>文字を、画面上の見た目で何文字分に展開するかを指定する
 set tabstop=2
 "vimが挿入するインデント(cindent)やシフトオペレータ(<<,>>)で挿入/削除されるインデントの幅を画面上の見た目で何文字文であるかを指定する
 set shiftwidth=2
