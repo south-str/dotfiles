@@ -50,10 +50,22 @@ if [ -e ${brewCompletion} ]; then
   source ${brewCompletion}
 fi
 
+## nodebrewの補完
+nodebrewCompletion=/usr/local/etc/bash_completion.d/nodebrew
+if [ -e ${nodebrewCompletion} ]; then
+  source ${nodebrewCompletion}
+fi
+
 ## dockerの補完
 dockerCompletion=/usr/local/etc/bash_completion.d/docker
 if [ -e ${dockerCompletion} ]; then
   source ${dockerCompletion}
+fi
+
+## pandocの補完
+pandocCompletion=/usr/local/etc/bash_completion.d/pandoc
+if [ -e ${pandocCompletion} ]; then
+  eval "$(pandoc --bash-completion)"
 fi
 
 #-------------------------------------------------------------------------------

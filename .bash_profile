@@ -5,6 +5,8 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 # Homebrewでインストールしたopenssl用にpathを追加する
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+# Homebrewでインストールしたcurl用にpathを追加する
+export PATH="/usr/local/opt/curl/bin:$PATH"
 # Homebrewで--with-gettextオプションをつけてコンパイルする際に環境変数を設定する。
 # makeファイルのconfigに使われるようなので使用後はコメントアウトする。
 #export LDFLAGS="-L/usr/local/opt/gettext/lib"
