@@ -60,6 +60,10 @@ highlight DiffText cterm=reverse
 set foldmethod=indent
 "折り畳み表示カラム列数
 set foldcolumn=4
+"折り畳みするのに最低必要な行数。値は+1される。既定値の1なら2行になる
+set foldminlines=2
+"折り畳みを閉じておく量
+set foldlevel=1
 
 "--statusline--
 "ステータスラインを常に表示
