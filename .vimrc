@@ -20,12 +20,6 @@ set autoindent
 set backspace=indent,eol,start
 "画面の端で折り返さない
 set nowrap
-"html閉じタグ補完
-augroup XML_Complete
-  autocmd!
-  autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
-  autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
-augroup END
 
 "--look and feel--
 "入力中のコマンド(yyなど)を表示する
@@ -107,6 +101,29 @@ set ambiwidth=double
 set splitbelow
 "ウィンドウの垂直分割時に新しいウィンドウを右に開く
 set splitright
+
+"--auto command--
+if has("autocmd")
+  "html閉じタグ補完
+  augroup XML_Complete
+    "groupを指定しているが、指定しない場合は現在のgroupが指定される(ので無くてもいい)
+    autocmd! XML_Complete
+    autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
+    autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
+  augroup END
+
+  "ファイル編集開始時に最後のカーソル位置までジャンプする
+  "(see `:h restore-cursor` or `:h last-position-jump`)
+  "元々はdefault.vimに記述されている？
+  "以下のコードはamazon linuxからコピーして少し改変したもの
+  augroup remindCursorPosition
+    autocmd! remindCursorPosition
+    autocmd BufReadPost *
+          \ if line("'\"") > 0 && line("'\"") <= line("$") |
+          \   exe "normal! g'\"" |
+          \ endif
+  augroup END
+endif
 
 "--plugin--
 source ~/.vim/plugin.vim
