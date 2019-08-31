@@ -7,6 +7,8 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 # Homebrewでインストールしたcurl用にpathを追加する
 export PATH="/usr/local/opt/curl/bin:$PATH"
+# Homebrewでインストールしたruby用にpathを追加する
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 # Homebrewで--with-gettextオプションをつけてコンパイルする際に環境変数を設定する。
 # makeファイルのconfigに使われるようなので使用後はコメントアウトする。
 #export LDFLAGS="-L/usr/local/opt/gettext/lib"
@@ -27,7 +29,7 @@ export PATH="$HOME/.nodebrew/current/bin:$PATH"
 # Node.jsをインストールする前は無効化しておく <- 間違い。インストール後にsetupを実行していないから
 # Homebrew経由でnodebrewをインストールしている場合は、~/.nodebrew/srcが存在していないと
 # nodeのインストールでエラーが発生する。 <- setupを実行していないから
-# /usr/local/etc/bash_completion.dにbash補間がインストールされている
+# /usr/local/etc/bash_completion.dにbash補完がインストールされている
 #-------------------------------------------------------------------------------
 # goenv用の設定
 GOENV_PATH=/usr/local/bin/goenv
