@@ -44,6 +44,10 @@ export PATH="$GOPATH/bin:$PATH"
 # curl用の環境変数設定
 export PATH="/usr/local/opt/curl/bin:$PATH"
 #-------------------------------------------------------------------------------
+# Google Cloud Platform SDK
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+#-------------------------------------------------------------------------------
 # ターミナル(bash)起動時に.bashrcを読み込む
 if [ -f ~/.bashrc ] ; then
   . ~/.bashrc
