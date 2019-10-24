@@ -1,0 +1,32 @@
+#-------------------------------------------------------------------------------
+# .common_run_command for Darwin and Linux
+#-------------------------------------------------------------------------------
+# bash, zsh共通の設定を記述する
+# .*rcのrcはrun commandの略らしい
+# http://www.ne.jp/asahi/tao/elis/bitfaq/s001.html#1993.4
+# http://neos21.hatenablog.com/entry/2017/02/15/092253
+# http://www.catb.org/jargon/html/R/rc-file.html
+#-------------------------------------------------------------------------------
+# manのカラー化。ページャの設定でANSIカラーコードを有効にする。
+export MANPAGER='less -iMRs'
+export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
+export LESS_TERMCAP_us=$'\E[04;32m'      # Begins underline.
+export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
+export LESS_TERMCAP_mb=$'\E[05;31m'      # Begins blinking.
+export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
+export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
+export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
+#-------------------------------------------------------------------------------
+# lsのエイリアスを設定し、色分けされるようにする
+if [ "$(uname)" = 'Darwin' ]; then
+  alias ls='ls -FGh'
+  alias ll='ls -FGhl'
+  alias la='ls -aFGhl'
+elif [ "$(uname)" = 'Linux' ]; then
+  alias ls='ls -Fh --color=auto'
+  alias ll='ls -Fhl --color=auto'
+  alias la='ls -aFhl --color=auto'
+fi
+#-------------------------------------------------------------------------------
+# grepの色付け
+alias grep='grep --color=auto'
