@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ###
 # @(#) setup.sh ver 0.0.x 04.13.2017
 #
@@ -39,4 +39,5 @@ echo "download dein"
 cd ~/.vim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh ~/.vim
+echo "please execute [pip3 install --user pynvim]" # deopleteプラグインをインストールする前に必要になる。
 echo "open vim and execute [:call dein#install()]"
