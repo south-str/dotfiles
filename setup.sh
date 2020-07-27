@@ -31,6 +31,8 @@ ln -s ${CURRENT_DIRECTORY}/.zshrc ~/.zshrc
 ln -s ${CURRENT_DIRECTORY}/.vimrc ~/.vimrc
 if [ -d ~/.vim ] ; then
   ln -s ${CURRENT_DIRECTORY}/.vim/plugin.vim ~/.vim/plugin.vim
+  ln -s ${CURRENT_DIRECTORY}/.vim/plugin.toml ~/.vim/plugin.toml
+  ln -s ${CURRENT_DIRECTORY}/.vim/plugin_lazy.toml ~/.vim/plugin_lazy.toml
 else
   echo "~/.vim directory is not exists"
 fi
