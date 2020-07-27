@@ -50,8 +50,8 @@ endif
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
-set background=dark
-call togglebg#map("<F5>")
+  set background=dark
+  call togglebg#map("<F5>")
 '''
 
 [[plugins]]
@@ -78,3 +78,6 @@ hook_add = '''
   " let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ccl64 --load ~/.cache/dein/repos/github.com/kovisoft/slimv/slime/start-swank.lisp\""'
   let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ros -s swank -e \\\"(swank:create-server :port 4005 :dont-close t)\\\" wait\""'
 '''
+
+[[plugins]]
+repo = 'nelsyeung/twig.vim'
