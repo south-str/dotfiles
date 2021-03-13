@@ -37,6 +37,17 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+set background=dark
+call togglebg#map("<F5>")
+augroup setSolarized
+  autocmd!
+  autocmd setSolarized VimEnter * ++nested colorscheme solarized
+augroup END
+'''
+
+[[plugins]]
 repo = 'vim-scripts/SyntaxComplete'
 hook_add = '''
   if has("autocmd") && exists("+omnifunc")
@@ -45,13 +56,6 @@ hook_add = '''
           \setlocal omnifunc=syntaxcomplete#Complete |
           \endif
 endif
-'''
-
-[[plugins]]
-repo = 'altercation/vim-colors-solarized'
-hook_add = '''
-set background=dark
-call togglebg#map("<F5>")
 '''
 
 [[plugins]]

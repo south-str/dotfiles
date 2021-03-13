@@ -1,3 +1,4 @@
+" [ plugin.vim ]
 if &compatible
   set nocompatible
 endif
@@ -18,8 +19,6 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-filetype plugin indent on
-
 "--solarized option--
+filetype plugin indent on
 syntax enable
-colorscheme solarized
