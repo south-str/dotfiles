@@ -39,12 +39,13 @@ hook_add = '''
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
-set background=dark
-call togglebg#map("<F5>")
-augroup setSolarized
-  autocmd!
-  autocmd setSolarized VimEnter * ++nested colorscheme solarized
-augroup END
+  set background=dark
+  call togglebg#map("<F5>")
+  augroup setSolarized
+    autocmd!
+    autocmd setSolarized VimEnter * ++nested colorscheme solarized
+  augroup END
+  colorscheme solarized
 '''
 
 [[plugins]]
@@ -85,3 +86,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nelsyeung/twig.vim'
+
+[[plugins]]
+repo = 'previm/previm'
+hook_add = '''
+  " :PrevimOpenで実行されるコマンド
+  let g:previm_open_cmd = 'open -a Safari'
+  " プレビューヘッダ非表示
+  let g:previm_show_header = 0
+'''
