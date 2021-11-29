@@ -22,4 +22,3 @@ filetype plugin indent on
 
 "--solarized option--
 syntax enable
-colorscheme solarized
