@@ -65,13 +65,13 @@ repo = 'vim-jp/vimdoc-ja'
 repo = 'thinca/vim-quickrun'
 hook_add = '''
   let g:quickrun_config = {
-        \"_" : {
-        \"outputter/buffer/opener" : ":botright 8sp",
-        \"outputter/buffer/close_on_empty" : 1,
-        \"runner" : "vimproc",
-        \"runner/vimproc/updatetime" : 60
-        \},
-        \}
+    \"_" : {
+      \"outputter/buffer/opener" : ":botright 8sp",
+      \"outputter/buffer/close_on_empty" : 1,
+      \"runner" : "vimproc",
+      \"runner/vimproc/updatetime" : 60
+    \},
+  \}
   nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 '''
 
