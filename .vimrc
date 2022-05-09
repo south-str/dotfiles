@@ -6,8 +6,6 @@ scriptencoding utf-8
 set autoread
 "クリップボードを使用する
 set clipboard+=unnamed
-"ファイル名と内容によってファイルタイプを判別し、ファイルタイププラグインを有効にする
-"filetype indent plugin on
 "バッファを保存しなくても他のバッファを表示できるようにする
 set hidden
 "コマンドライン補完を便利に
@@ -24,11 +22,8 @@ set nowrap
 "--look and feel--
 "入力中のコマンド(yyなど)を表示する
 set showcmd
-"シンタックスハイライトを有効にする(plugin.vimで有効にしている)
-"syntax on
 "行を強調表示
 set cursorline
-"highlight CursorLine term=reverse cterm=reverse
 "列を強調表示
 set cursorcolumn
 "不可視文字を表示する
@@ -75,7 +70,7 @@ set statusline+=[LEN=%L]
 "--indentation options--
 "ファイル中の<Tab>文字を、画面上の見た目で何文字分に展開するかを指定する
 set tabstop=2
-"vimが挿入するインデント(cindent)やシフトオペレータ(<<,>>)で挿入/削除されるインデントの幅を画面上の見た目で何文字文であるかを指定する
+"vimが挿入するインデント(cindent)やシフトオペレータ(<<,>>)で挿入/削除されるインデントの幅を画面上の見た目で何文字分であるかを指定する
 set shiftwidth=2
 "キーボードで<Tab>キーを押した時に挿入される空白の量
 set softtabstop=2

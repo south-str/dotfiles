@@ -1,9 +1,11 @@
 # [plugin_lazy.toml]
 
 [[plugins]]
+# Go開発用プラグイン(コマンド)
 repo = 'fatih/vim-go'
 on_ft = 'go'
 
 [[plugins]]
+# TOMLシンタックスハイライト
 repo = 'cespare/vim-toml'
 on_ft = 'toml'

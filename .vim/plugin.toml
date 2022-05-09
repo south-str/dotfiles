@@ -1,42 +1,77 @@
 # [plugin.toml]
 
+## マネージャおよびプラグイン開発用の汎用プラグイン
 [[plugins]]
+# プラグインマネージャ
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+# 非同期実行ライブラリ
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
+# ローカル検索統合インターフェース
+# 開発終了のためdeno(JS/TS実行環境)をインストールしてddu.vimに乗り換えるべき
 repo = 'Shougo/unite.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  let g:deoplete#enable_at_startup = 1
-'''
-
-[[plugins]]
+# リモートプラグインフレームワーク(vim-hug-neovim-rpcと同時に必要かもしれない)
 repo = 'roxma/nvim-yarp'
 if = '''!has('nvim')'''
 
 [[plugins]]
+# neovim互換性レイヤー(nvim-yarpと同時に必要かもしれない)
 repo = 'roxma/vim-hug-neovim-rpc'
 if = '''!has('nvim')'''
 
+## シンタックスハイライト
+## できる限りLSP(Language Server Protocol(vim-lspが有力?))に置き換えたい
 [[plugins]]
+# React, JSXシンタックスハイライト
+# 非推奨。MaxMEllon/vim-jsx-prettyがよく使われている？
 repo = 'mxw/vim-jsx'
 
 [[plugins]]
+# JSシンタックスハイライト
 repo = 'othree/yajs.vim'
 
 [[plugins]]
+# JSライブラリのシンタックスハイライト
 repo = 'othree/javascript-libraries-syntax.vim'
 hook_add = '''
   let g:used_javascript_libs = 'underscore,react,flux,jasmine'
 '''
 
 [[plugins]]
+# Twigシンタックスハイライト
+repo = 'nelsyeung/twig.vim'
+
+## 補完(completion)
+[[plugins]]
+# 補完プラグイン
+# 開発終了のためddc.vimに乗り換えるべき
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+# OMNI補完スクリプトセットアッププラグイン
+# 以下を.vimrcに追加すると言語固有のOMNIスクリプトがまだない全てのファイルタイプに対してSyntaxCompleteがセットアップされる
+repo = 'vim-scripts/SyntaxComplete'
+hook_add = '''
+  if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype *
+          \ if &omnifunc == "" |
+          \ setlocal omnifunc=syntaxcomplete#Complete |
+          \ endif
+  endif
+'''
+
+## カラースキーム
+[[plugins]]
+# Solarizedカラースキーム
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
   set background=dark
@@ -48,35 +83,28 @@ hook_add = '''
   colorscheme solarized
 '''
 
+## その他プラグイン
 [[plugins]]
-repo = 'vim-scripts/SyntaxComplete'
-hook_add = '''
-  if has("autocmd") && exists("+omnifunc")
-    autocmd Filetype *
-          \if &omnifunc == "" |
-          \setlocal omnifunc=syntaxcomplete#Complete |
-          \endif
-endif
-'''
-
-[[plugins]]
+# VIMヘルプの日本語訳
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
+# 編集中のコード即時実行環境
 repo = 'thinca/vim-quickrun'
 hook_add = '''
   let g:quickrun_config = {
-    \"_" : {
-      \"outputter/buffer/opener" : ":botright 8sp",
-      \"outputter/buffer/close_on_empty" : 1,
-      \"runner" : "vimproc",
-      \"runner/vimproc/updatetime" : 60
-    \},
-  \}
+    \ "_" : {
+      \ "outputter/buffer/opener" : ":botright 8sp",
+      \ "outputter/buffer/close_on_empty" : 1,
+      \ "runner" : "vimproc",
+      \ "runner/vimproc/updatetime" : 60
+    \ },
+  \ }
   nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 '''
 
 [[plugins]]
+# LISPのSWANKサーバ起動および通信を行うLISPインタラクション開発環境
 repo = 'kovisoft/slimv'
 hook_add = '''
   " SWANKサーバを起動するためのコマンド
@@ -85,9 +113,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nelsyeung/twig.vim'
-
-[[plugins]]
+# Markdownリアルタイム外部プレビュー
 repo = 'previm/previm'
 hook_add = '''
   " :PrevimOpenで実行されるコマンド
