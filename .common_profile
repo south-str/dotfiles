@@ -11,7 +11,6 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/curl/bin:$PATH"
 # Homebrewでインストールしたruby用にpathを追加する
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-# Homebrewでインストールしたanyenv用にpathを追加する
 #-------------------------------------------------------------------------------
 # nodebrew用の環境変数設定
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
