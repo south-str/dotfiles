@@ -11,9 +11,8 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-# ローカル検索統合インターフェース
-# 開発終了のためdeno(JS/TS実行環境)をインストールしてddu.vimに乗り換えるべき
-repo = 'Shougo/unite.vim'
+# VimからDeno(JS/TS実行環境)を利用するためのプラグイン
+repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 # リモートプラグインフレームワーク(vim-hug-neovim-rpcと同時に必要かもしれない)
@@ -25,23 +24,82 @@ if = '''!has('nvim')'''
 repo = 'roxma/vim-hug-neovim-rpc'
 if = '''!has('nvim')'''
 
-## シンタックスハイライト
-## できる限りLSP(Language Server Protocol(vim-lspが有力?))に置き換えたい
+## ファジーファインダー
 [[plugins]]
-# React, JSXシンタックスハイライト
-# 非推奨。MaxMEllon/vim-jsx-prettyがよく使われている？
-repo = 'mxw/vim-jsx'
-
-[[plugins]]
-# JSシンタックスハイライト
-repo = 'othree/yajs.vim'
-
-[[plugins]]
-# JSライブラリのシンタックスハイライト
-repo = 'othree/javascript-libraries-syntax.vim'
+# ファジーファインダー(要vim-denops/denops.vim)
+repo = 'Shougo/ddu.vim'
 hook_add = '''
-  let g:used_javascript_libs = 'underscore,react,flux,jasmine'
+  " default settings
+  call ddu#custom#patch_global({
+  \ 'ui': 'ff',
+  \ 'sources': [{'name': 'file_rec', 'params': {}}],
+  \ 'sourceOptions': {
+  \   '_': {
+  \     'matchers': ['matcher_substring'],
+  \   },
+  \ },
+  \ 'kindOptions': {
+  \   'file': {
+  \     'defaultAction': 'open',
+  \   },
+  \ }
+  \ })
 '''
+
+[[plugins]]
+# UI
+# キーマッピングの設定は基本的なもののみ行った(see https://zenn.dev/shougo/articles/ddu-vim-beta)
+repo = 'Shougo/ddu-ui-ff'
+hook_add = '''
+  " key mapping
+  autocmd FileType ddu-ff call s:ddu_my_settings()
+  function! s:ddu_my_settings() abort
+    nnoremap <buffer><silent> <CR>
+      \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+    nnoremap <buffer><silent> <Space>
+      \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+    nnoremap <buffer><silent> i
+      \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+    nnoremap <buffer><silent> q
+      \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+  endfunction
+
+  autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+  function! s:ddu_filter_my_settings() abort
+    inoremap <buffer><silent> <CR>
+      \ <Esc><Cmd>close<CR>
+    nnoremap <buffer><silent> <CR>
+      \ <Cmd>close<CR>
+    nnoremap <buffer><silent> q
+      \ <Cmd>close<CR>
+  endfunction
+
+  " define ddu command
+  command! DduStart :call ddu#start({})
+'''
+
+[[plugins]]
+# ファイル/パス収集(要Shougo/ddu-kind-file)
+repo = 'Shougo/ddu-source-file_rec'
+
+[[plugins]]
+# フィルタ
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+[[plugins]]
+# kind
+repo = 'Shougo/ddu-kind-file'
+
+## シンタックスハイライト
+## できる限りLSP(Language Server Protocol)に置き換えたい
+[[plugins]]
+# LSP(Language Server Protocol)プラグイン
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+# vim-lspのLSPインストール/設定を簡便にするプラグイン
+# インストールしたいファイルタイプのファイルを開いて:LspInstallServerを実行するとLSPをインストールできる
+repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 # Twigシンタックスハイライト
@@ -49,12 +107,66 @@ repo = 'nelsyeung/twig.vim'
 
 ## 補完(completion)
 [[plugins]]
-# 補完プラグイン
-# 開発終了のためddc.vimに乗り換えるべき
-repo = 'Shougo/deoplete.nvim'
+# 補完プラグインフレームワーク
+repo = 'Shougo/ddc.vim'
 hook_add = '''
-  let g:deoplete#enable_at_startup = 1
+  call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'file'])
+  call ddc#custom#patch_global('sourceOptions', {
+    \ '_': {
+    \   'matchers': ['matcher_head'],
+    \   'sorters': ['sorter_rank'],
+    \ },
+    \ 'around': {
+    \   'mark': 'around',
+    \ },
+    \ 'file': {
+    \   'mark': 'file',
+    \   'isVolatile': v:true,
+    \   'forceCompletionPattern': '\S/\S*',
+    \ },
+    \ 'vim-lsp': {
+    \   'matchers': ['matcher_head'],
+    \   'mark': 'LSP',
+    \ }})
+  call ddc#custom#patch_filetype(
+    \ ['ps1', 'dosbatch', 'autohotkey', 'registry'], {
+    \   'sourceOptions': {
+    \     'file': {
+    \       'forceCompletionPattern': '\S\\\S*',
+    \     },
+    \   },
+    \   'sourceParams': {
+    \     'file': {
+    \       'mode': 'win32',
+    \     },
+    \   }})
+  call ddc#enable()
 '''
+
+[[plugins]]
+# ddcのsource
+# カーソルの周囲、つまり現在のバッファ内の候補を収集する
+repo = 'Shougo/ddc-around'
+
+[[plugins]]
+# ddcのsource
+# ファイル名補完
+repo = 'LumaKernel/ddc-file'
+
+[[plugins]]
+# ddcのsource
+# LSP
+repo = 'shun/ddc-vim-lsp'
+
+[[plugins]]
+# ddcのfilter
+# 見出し一致確認(入力の絞り込み)
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+# ddcのfilter
+# 候補のソートを行う
+repo = 'Shougo/ddc-sorter_rank'
 
 [[plugins]]
 # OMNI補完スクリプトセットアッププラグイン
