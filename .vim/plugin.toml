@@ -100,6 +100,22 @@ repo = 'prabirshrestha/vim-lsp'
 # vim-lspのLSPインストール/設定を簡便にするプラグイン
 # インストールしたいファイルタイプのファイルを開いて:LspInstallServerを実行するとLSPをインストールできる
 repo = 'mattn/vim-lsp-settings'
+hook_add = '''
+  let g:lsp_settings = {
+  \   'intelephense': {
+  \     'workspace_config': {
+  \       'intelephense': {
+  \         'completion': {
+  \           'fullyQualifyGlobalConstantsAndFunctions': v:true,
+  \         },
+  \         'phpdoc': {
+  \           'useFullyQualifiedNames': v:true,
+  \         }
+  \       }
+  \     }
+  \   }
+  \ }
+'''
 
 [[plugins]]
 # Twigシンタックスハイライト
