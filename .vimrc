@@ -100,12 +100,12 @@ set splitright
 "--auto command--
 if has("autocmd")
   "html閉じタグ補完
-  augroup XML_Complete
-    "groupを指定しているが、指定しない場合は現在のgroupが指定される(ので無くてもいい)
-    autocmd! XML_Complete
-    autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
-    autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
-  augroup END
+  "augroup XML_Complete
+    ""groupを指定しているが、指定しない場合は現在のgroupが指定される(ので無くてもいい)
+    "autocmd! XML_Complete
+    "autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
+    "autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
+  "augroup END
 
   "ファイル編集開始時に最後のカーソル位置までジャンプする
   "(see `:h restore-cursor` or `:h last-position-jump`)

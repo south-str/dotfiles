@@ -40,6 +40,6 @@ fi
 echo "download dein"
 cd ~/.vim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-sh ./installer.sh ~/.vim
+sh ./installer.sh ~/.cache/dein
 echo "please execute [pip3 install --user pynvim]" # deopleteプラグインをインストールする前に必要になる。
 echo "open vim and execute [:call dein#install()]"
