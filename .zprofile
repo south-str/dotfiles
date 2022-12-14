@@ -7,3 +7,5 @@ if [ -e ${COMMON_PROFILE} ]
 then source ${COMMON_PROFILE}
 fi
 #-------------------------------------------------------------------------------
+#Homebrew用コマンド
+eval "$(/opt/homebrew/bin/brew shellenv)"
