@@ -10,17 +10,18 @@ fi
 # git補完(だけにとどまらないかも)
 autoload -Uz compinit && compinit
 # bashの補完スクリプトも必要
-gitCompletion=/usr/local/etc/bash_completion.d/git-completion.bash
+gitCompletion=/opt/homebrew/etc/bash_completion.d/git-completion.bash
 if [ -e ${gitCompletion} ]; then
   zstyle ':completion:*:*:git:*' script ${gitCompletion}
 fi
 # homebrewでインストールされた補完を一括で読み込む
-zshCompletion=/usr/local/share/zsh/site-functions
+zshCompletion=/opt/homebrew/share/zsh/site-functions
 fpath=(${zshCompletion} $fpath)
 #-------------------------------------------------------------------------------
 # プロンプトの変更
 ## gitのブランチを表示する
-gitPrompt=/usr/local/etc/bash_completion.d/git-prompt.sh
+gitPrompt=/opt/homebrew/etc/bash_completion.d/git-prompt.sh
+
 if [ -e ${gitPrompt} ]; then
   source ${gitPrompt}
 fi
