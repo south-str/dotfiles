@@ -19,6 +19,8 @@ if [ -d ~/.vim ] ; then
 else
   mkdir ~/.vim
 fi
+echo "finish make directories"
+
 # 設定ファイルのシンボリックリンクを$HOME配下に配置する
 # 本当はループで回す方がいいけど、まだ数が少ないので直書きで
 echo "create links"
@@ -33,6 +35,7 @@ if [ -d ~/.vim ] ; then
   ln -s ${CURRENT_DIRECTORY}/.vim/plugin.vim ~/.vim/plugin.vim
   ln -s ${CURRENT_DIRECTORY}/.vim/plugin.toml ~/.vim/plugin.toml
   ln -s ${CURRENT_DIRECTORY}/.vim/plugin_lazy.toml ~/.vim/plugin_lazy.toml
+  echo "finish create links"
 else
   echo "~/.vim directory is not exists"
 fi
@@ -40,6 +43,9 @@ fi
 echo "download dein"
 cd ~/.vim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-sh ./installer.sh ~/.cache/dein
+echo "execute install script"
+sh ./installer.sh ~/.vim/dein
+echo "finish install script"
+echo "---------------------------------------------------------------------------------"
 echo "please execute [pip3 install --user pynvim]" # deopleteプラグインをインストールする前に必要になる。
 echo "open vim and execute [:call dein#install()]"
